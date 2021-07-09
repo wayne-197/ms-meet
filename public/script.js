@@ -8,7 +8,7 @@ var recorder;
 myVideo.muted = true;
 
 var peer = new Peer(undefined, {
-    host: 'ms-meeting.herokuapp.com',
+    host: 'ms-meet.herokuapp.com',
     path: "/",
 
     port: 443,
