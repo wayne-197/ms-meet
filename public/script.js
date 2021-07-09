@@ -8,11 +8,9 @@ var recorder;
 myVideo.muted = true;
 
 var peer = new Peer(undefined, {
-    host: 'ms-meet.herokuapp.com',
-    path: "/",
-
-    port: 443,
-    secure: true,
+    path: "/peerjs",
+    host: "/",
+    port: "443",
 });
 
 //Screen Share test
