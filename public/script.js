@@ -6,15 +6,16 @@ const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 var recorder;
 myVideo.muted = true;
-const port = process.env.PORT || 3000
-var peer = new Peer({
-    host: "ms-meeting.herokuapp.com",
-    port: "",
-    path: "/peerjs",
+
+var peer = new Peer(undefined, {
+    host: 'ms-meeting.herokuapp.com',
+    path: "/",
+
+    port: 443,
+    secure: true,
 });
 
-
-
+//Screen Share test
 
 var displayMediaOptions = {
     video: {
@@ -81,14 +82,14 @@ peer.on("call", function (call) {
     getUserMedia(
         { video: true, audio: true },
         function (stream) {
-            call.answer(stream);
+            call.answer(stream); // Answer the call with an A/V stream.
             const video = document.createElement("video");
             call.on("stream", function (remoteStream) {
                 addVideoStream(video, remoteStream);
             });
         },
         function (err) {
-            console.log("Cannot get local stream", err);
+            console.log("Failed to get local stream", err);
         }
     );
 });
@@ -186,7 +187,21 @@ const showHideChat = () => {
     }
 }
 
+const startRecording = () => {
 
+}
+
+const endRecording = () => {
+
+}
+
+//Hands up test
+// const handsUp = () => {
+//   var x = document.getElementsByName('video')
+//   x.style.cssText = ' display: block;flex: 1;object - fit: cover;border: 1px solid yellow;max - width: 800px;'
+// }
+
+// //Screen share test function
 function screenShare() {
 
     console.log('clicked')
@@ -207,6 +222,20 @@ function screenShare() {
                 connectToNewUser(userId, stream);
             });
         });
+
+        // video.addEventListener("loadedmetadata", () => {
+        //   video.play();
+        // });
+        // videoGrid.append(video);
+        // let totalUsers = document.getElementsByTagName("video").length;
+        // if (totalUsers > 1) {
+        //   for (let index = 0; index < totalUsers; index++) {
+        //     document.getElementsByTagName("video")[index].style.width =
+        //       100 / totalUsers + "%";
+        //   }
+        // }
+
+
 
     } catch (err) {
         console.error("Error: " + err);
