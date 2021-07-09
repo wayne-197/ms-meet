@@ -6,12 +6,13 @@ const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 var recorder;
 myVideo.muted = true;
-
-var peer = new Peer(undefined, {
+const port = process.env.PORT || 3000
+var peer = new Peer({
+    host: "ms-meeting.herokuapp.com",
+    port: "",
     path: "/peerjs",
-    host: "/",
-    port: "3000",
 });
+
 
 
 
