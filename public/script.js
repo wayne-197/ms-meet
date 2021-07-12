@@ -15,12 +15,6 @@ var peer = new Peer(undefined, {
 
 //Screen Share test
 
-var displayMediaOptions = {
-    video: {
-        cursor: "always"
-    },
-    audio: false
-};
 
 let myVideoStream;
 let currentId;
@@ -185,58 +179,4 @@ const showHideChat = () => {
     }
 }
 
-const startRecording = () => {
 
-}
-
-const endRecording = () => {
-
-}
-
-//Hands up test
-// const handsUp = () => {
-//   var x = document.getElementsByName('video')
-//   x.style.cssText = ' display: block;flex: 1;object - fit: cover;border: 1px solid yellow;max - width: 800px;'
-// }
-
-// //Screen share test function
-function screenShare() {
-
-    console.log('clicked')
-    const video = document.createElement("video");
-    try {
-        navigator.mediaDevices.getDisplayMedia(displayMediaOptions).then(stream => {
-            addVideoStream(myVideo, stream);
-
-            peer.on("call", (call) => {
-                call.answer(stream);
-                const video = document.createElement("video");
-                call.on("stream", (userVideoStream) => {
-                    addVideoStream(video, userVideoStream);
-                });
-            });
-            socket.on("user-connected", (userId) => {
-                currentId = userId;
-                connectToNewUser(userId, stream);
-            });
-        });
-
-        // video.addEventListener("loadedmetadata", () => {
-        //   video.play();
-        // });
-        // videoGrid.append(video);
-        // let totalUsers = document.getElementsByTagName("video").length;
-        // if (totalUsers > 1) {
-        //   for (let index = 0; index < totalUsers; index++) {
-        //     document.getElementsByTagName("video")[index].style.width =
-        //       100 / totalUsers + "%";
-        //   }
-        // }
-
-
-
-    } catch (err) {
-        console.error("Error: " + err);
-    }
-
-}
