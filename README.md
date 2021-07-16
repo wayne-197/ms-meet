@@ -9,5 +9,6 @@ Then use npm install command
 <li>
 Then use npm start command to start the server
 </li>
+<hr>
 You can see a demo of the application on https://ms-meet.herokuapp.com/ 
 
